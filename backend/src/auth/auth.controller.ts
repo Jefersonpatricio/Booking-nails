@@ -20,8 +20,8 @@ export class AuthController {
     const { accessToken, user, salon } = await this.authService.login(dto);
     res.cookie(ACCESS_TOKEN_COOKIE, accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: true,
+      sameSite: 'none',
       maxAge: ACCESS_TOKEN_COOKIE_MAX_AGE_MS,
     });
     return { user, salon };
