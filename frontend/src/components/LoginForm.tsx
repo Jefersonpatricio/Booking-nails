@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { login } from "@/lib/api";
 import styles from "./LoginForm.module.css";
 
 export default function LoginForm() {
@@ -19,7 +18,15 @@ export default function LoginForm() {
     setError(null);
     setSubmitting(true);
     try {
-      await login(email.trim(), password);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000"}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), password }),
+        credentials: "include",
+      });
+      if (!res.ok) throw new Error(await res.json().then(b => b.message).catch(() => "Email ou senha inválidos."));
+      const { accessToken } = await res.json();
+      localStorage.setItem("access_token", accessToken);
       router.replace(searchParams.get("from") ?? "/painel");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao entrar.");

@@ -23,9 +23,10 @@ export class AuthController {
       secure: true,
       sameSite: 'none',
       partitioned: true,
+      path: '/',
       maxAge: ACCESS_TOKEN_COOKIE_MAX_AGE_MS,
     });
-    return { user, salon };
+    return { accessToken, user, salon };
   }
 
   @Post('logout')

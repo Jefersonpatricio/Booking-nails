@@ -19,7 +19,10 @@ export type Appointment = {
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
 
 async function apiFetch(path: string, options: RequestInit = {}): Promise<Response> {
-  return fetch(`${API_URL}${path}`, { ...options, credentials: "include" });
+  const headers = new Headers(options.headers);
+  const token = typeof window !== "undefined" ? localStorage.getItem("access_token") : null;
+  if (token) headers.set("Authorization", `Bearer ${token}`);
+  return fetch(`${API_URL}${path}`, { ...options, headers, credentials: "include" });
 }
 
 async function parseErrorMessage(res: Response, fallback: string): Promise<string> {
