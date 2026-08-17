@@ -1,0 +1,208 @@
+.error {
+  color: #c0392b;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+.success {
+  color: #1f9d6b;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+.loading {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: #f1eeee;
+  border-radius: 10px;
+  padding: 4px;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.tab,
+.tabActive {
+  border: none;
+  background: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.tabActive {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tabActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.list {
+  padding: var(--panel-card-pad);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 8px;
+  border-bottom: 1px solid #f1eeee;
+  flex-wrap: wrap;
+}
+.row:last-child {
+  border-bottom: none;
+}
+
+.toggleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 72px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.toggleWrap input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.weekdayLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.fields {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.field label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.field input,
+.field select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: #ffffff;
+}
+
+.monthNav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.monthNavTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  min-width: 160px;
+  text-align: center;
+}
+.navBtn {
+  border: 1px solid var(--panel-border);
+  background: #ffffff;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.calendarPanel {
+  padding: 16px;
+}
+.calendarWeekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.calendarWeekdayLabel {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 8px 0;
+}
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-auto-rows: 76px;
+  gap: 4px;
+  transition: opacity 0.15s ease;
+}
+.calendarCellEmpty {
+  border-radius: 8px;
+}
+.calendarCell {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-family: inherit;
+  text-align: left;
+  position: relative;
+}
+.calendarCellDate {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.calendarCellStatusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.legendDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}

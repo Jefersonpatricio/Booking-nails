@@ -1,0 +1,41 @@
+.message {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.cancelBtn,
+.confirmBtn,
+.confirmBtnDanger {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--text);
+}
+
+.confirmBtn {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+}
+
+.confirmBtnDanger {
+  border: none;
+  background: #d9534f;
+  color: #fff;
+}

@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Salon {
+  id           String                 @id @default(cuid())
+  name         String
+  slug         String                 @unique
+  logoUrl      String?
+  whatsappNumber String?
+  createdAt    DateTime               @default(now())
+  users        User[]
+  services     Service[]
+  appointments Appointment[]
+  workingHours WorkingHours[]
+  overrides    AvailabilityOverride[]
+  transactions Transaction[]
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  salonId      String
+  salon        Salon    @relation(fields: [salonId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Service {
+  id           String        @id @default(cuid())
+  name         String
+  priceCents   Int
+  durationMin  Int
+  createdAt    DateTime      @default(now())
+  appointments Appointment[]
+  salonId      String
+  salon        Salon         @relation(fields: [salonId], references: [id])
+
+  @@unique([salonId, name])
+  @@index([salonId])
+}
+
+model Appointment {
+  id          String   @id @default(cuid())
+  clientName  String
+  clientPhone String
+  service     Service  @relation(fields: [serviceId], references: [id])
+  serviceId   String
+  date        DateTime
+  time        String
+  createdAt   DateTime @default(now())
+  salonId     String
+  salon       Salon    @relation(fields: [salonId], references: [id])
+
+  @@index([salonId])
+}
+
+// weekday: 0=Domingo .. 6=Sábado (mesma convenção de Date#getDay())
+model WorkingHours {
+  id          String  @id @default(cuid())
+  weekday     Int
+  isOpen      Boolean @default(false)
+  startTime   String  @default("09:00")
+  endTime     String  @default("18:00")
+  intervalMin Int     @default(60)
+  salonId     String
+  salon       Salon   @relation(fields: [salonId], references: [id])
+
+  @@unique([salonId, weekday])
+  @@index([salonId])
+}
+
+// Exceção pontual para uma data específica ("YYYY-MM-DD"), sobrepõe WorkingHours daquele dia da semana.
+model AvailabilityOverride {
+  id          String   @id @default(cuid())
+  date        String
+  isOpen      Boolean
+  startTime   String?
+  endTime     String?
+  intervalMin Int?
+  salonId     String
+  salon       Salon    @relation(fields: [salonId], references: [id])
+
+  @@unique([salonId, date])
+  @@index([salonId])
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+// Lançamento manual (entrada ou saída) — não inclui a receita gerada por Appointment, que é calculada à parte.
+model Transaction {
+  id          String          @id @default(cuid())
+  type        TransactionType
+  description String
+  amountCents Int
+  date        DateTime
+  createdAt   DateTime        @default(now())
+  salonId     String
+  salon       Salon           @relation(fields: [salonId], references: [id])
+
+  @@index([salonId])
+}

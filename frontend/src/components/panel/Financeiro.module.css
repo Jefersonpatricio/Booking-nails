@@ -1,0 +1,125 @@
+.error {
+  color: #c0392b;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.periodGroup {
+  display: flex;
+  width: fit-content;
+  background: #f1eeee;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+.periodBtn,
+.periodBtnActive {
+  border: none;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.periodBtnActive {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.section {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+@media (max-width: 899px) {
+  .section {
+    flex-direction: column;
+  }
+}
+
+.panelTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.chartPanel {
+  flex: 1;
+  min-width: 280px;
+  padding: var(--panel-card-pad);
+}
+.chart {
+  width: 100%;
+  max-height: 260px;
+}
+
+.empty {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+.txPanel {
+  width: 300px;
+  flex-shrink: 0;
+  padding: var(--panel-card-pad);
+}
+@media (max-width: 899px) {
+  .txPanel {
+    width: 100%;
+  }
+}
+.txRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1eeee;
+}
+.txInfo {
+  min-width: 0;
+  flex: 1;
+}
+.txName {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.txDate {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+.txRight {
+  text-align: right;
+  flex-shrink: 0;
+}
+.txValue {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}
+.deleteBtn {
+  border: none;
+  background: none;
+  color: #b3a8ab;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  padding: 4px;
+}
+.deleteBtn:hover {
+  color: #c0392b;
+}

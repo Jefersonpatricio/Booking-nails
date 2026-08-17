@@ -1,0 +1,77 @@
+.content {
+  width: 340px;
+  max-width: 90vw;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Painel header usa z-index:70; shadcn drawer nasce com z-50 (Tailwind), ficando atrás. */
+:global([data-slot="drawer-viewport"]) {
+  z-index: 80 !important;
+}
+:global([data-slot="drawer-overlay"]) {
+  z-index: 79 !important;
+}
+
+.header {
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 16px !important;
+}
+.title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+}
+.subtitle {
+  font-size: 13px !important;
+  color: var(--text-muted) !important;
+}
+
+.body {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text);
+}
+.infoRow :global(.material-symbols-outlined) {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 999px;
+  background: #1f9d6b;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: #d9534f;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
