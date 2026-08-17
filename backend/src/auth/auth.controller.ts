@@ -22,6 +22,7 @@ export class AuthController {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
+      partitioned: true,
       maxAge: ACCESS_TOKEN_COOKIE_MAX_AGE_MS,
     });
     return { user, salon };
